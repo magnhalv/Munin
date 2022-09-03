@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Munin.Application.MemorySets.Queries.GetMemorySet;
 using Munin.Application.TodoLists.Commands.CreateTodoList;
 using Munin.Application.TodoLists.Commands.DeleteTodoList;
@@ -8,7 +9,7 @@ using Munin.Application.TodoLists.Queries.GetTodos;
 
 namespace Munin.Api.Controllers;
 
-//[Authorize]
+[Authorize]
 public class MemorySetsController : ApiControllerBase
 {
     [HttpGet]

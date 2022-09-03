@@ -49,10 +49,11 @@ else
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseCors(myAllowSpecificOrigins);
-//app.UseAuthorization();
-
+app.UseAuthorization();
+app.UseAuthentication();
 app.MapControllers();
 
 app.Run();

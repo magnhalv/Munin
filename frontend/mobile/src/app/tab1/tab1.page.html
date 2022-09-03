@@ -13,7 +13,15 @@
     </ion-toolbar>
   </ion-header>
 
-  This is content
+  <div *ngIf="(auth.isAuthenticated$ | async) === false">
+    <button (click)="auth.loginWithRedirect()">Log in</button>
+    <button (click)="auth.logout()">Log out</button>
+  </div>
+
+  <div *ngIf="(auth.isAuthenticated$ | async) === true">
+    You're logged in
+  </div>
+
 
   <div *ngIf="memorySets.status === 'SUCCESS'">
     <ul>

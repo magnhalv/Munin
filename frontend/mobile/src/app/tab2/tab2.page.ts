@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MemorySetsService} from '../services/memory-sets.service';
+import {AuthService} from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private memorySetService: MemorySetsService, public auth: AuthService) {
+    auth.isAuthenticated$.subscribe(r => console.log('is auth', r));
+    auth.user$.subscribe(r => console.log('user', r));
+    auth.error$.subscribe(err => console.log('err', err));
+  }
 
 }
