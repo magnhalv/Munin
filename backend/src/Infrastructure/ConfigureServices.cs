@@ -37,7 +37,7 @@ public static class ConfigureServices
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
-        services.AddAuthentication(options =>
+        /*services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -52,7 +52,7 @@ public static class ConfigureServices
             o.AddPolicy("memory-sets:read-write", p => p.
                 RequireAuthenticatedUser().
                 RequireClaim("scope", "memory-sets:read-write"));
-        });
+        });*/
 
         return services;
     }
