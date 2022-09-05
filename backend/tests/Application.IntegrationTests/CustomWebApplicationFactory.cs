@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Moq;
-using Munin.Application.Common.Interfaces;
-using Munin.Infrastructure.Persistence;
+
 
 namespace Munin.Application.IntegrationTests;
 
@@ -26,7 +24,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             configurationBuilder.AddConfiguration(integrationConfig);
         });
 
-        builder.ConfigureServices((builder, services) =>
+        /*builder.ConfigureServices((builder, services) =>
         {
             services
                 .Remove<ICurrentUserService>()
@@ -38,6 +36,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                 .AddDbContext<ApplicationDbContext>((sp, options) =>
                     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
                         builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-        });
+        });*/
     }
 }

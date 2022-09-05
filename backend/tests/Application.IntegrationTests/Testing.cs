@@ -1,6 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
@@ -31,7 +29,7 @@ public partial class Testing
         };
     }
 
-    public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
+    /*public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
     {
         using var scope = _scopeFactory.CreateScope();
 
@@ -130,5 +128,5 @@ public partial class Testing
     [OneTimeTearDown]
     public void RunAfterAnyTests()
     {
-    }
+    }*/
 }

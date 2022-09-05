@@ -29,7 +29,7 @@ public class MappingTests
 
     [Test]
     [TestCase(typeof(MemorySet), typeof(MemorySetDto))]
-    [TestCase(typeof(TodoItem), typeof(TodoItemDto))]
+    //[TestCase(typeof(TodoItem), typeof(TodoItemDto))]
     [TestCase(typeof(MemorySet), typeof(LookupDto))]
     [TestCase(typeof(TodoItem), typeof(LookupDto))]
     public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
