@@ -37,22 +37,22 @@ public static class ConfigureServices
         services.AddTransient<IIdentityService, IdentityService>();
         services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
-        /*services.AddAuthentication(options =>
+        services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(options =>
         {
-            options.Authority = "https://heimdall-local.eu.auth0.com/";
-            options.Audience = "https://localhost:7085";
+            options.Authority = configuration["Auth0:authority"];
+            options.Audience = configuration["Auth0:audience"];
         });
 
         services.AddAuthorization(o =>
         {
-            o.AddPolicy("memory-sets:read-write", p => p.
+            o.AddPolicy("memory_sets:read", p => p.
                 RequireAuthenticatedUser().
-                RequireClaim("scope", "memory-sets:read-write"));
-        });*/
+                RequireClaim("scope", "memory_sets:read"));
+        });
 
         return services;
     }
