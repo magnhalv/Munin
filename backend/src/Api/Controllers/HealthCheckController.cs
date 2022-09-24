@@ -8,8 +8,17 @@ namespace Munin.Api.Controllers;
 public class HealthCheckController : ControllerBase
 {
     [HttpGet]
-    public string Get()
+    public HealthCheck Get()
     {
-        return "Ok";
+        var hc = new HealthCheck()
+        {
+            Status = "Ok"
+        };
+        return hc;
+    }
+
+    public class HealthCheck
+    {
+        public string Status { get; set; }
     }
 }
