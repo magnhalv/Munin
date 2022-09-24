@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: myAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins(builder.Configuration["Cors"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+            policy.WithOrigins(builder.Configuration.GetSection("Cors").Get<List<string>>().ToArray()).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
         });
 });
 
