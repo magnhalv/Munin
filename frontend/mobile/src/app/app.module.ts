@@ -10,8 +10,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthHttpInterceptor, AuthModule} from '@auth0/auth0-angular';
 import {LoginComponent} from './login/login.component';
 
-//export const API_URL = 'https://localhost:7085';
-export const API_URL = 'https://muninapi.azurewebsites.net';
+export const API_URL = 'https://localhost:7085';
+//export const API_URL = 'https://muninapi.azurewebsites.net';
 import config from '../../capacitor.config';
 const redirectUri = `${config.appId}://heimdall-local.eu.auth0.com/capacitor/${config.appId}/callback`;
 
@@ -23,7 +23,7 @@ const redirectUri = `${config.appId}://heimdall-local.eu.auth0.com/capacitor/${c
     cacheLocation: 'localstorage',
     scope: 'read:memory_sets write:memory_sets',
     audience: API_URL,
-    redirectUri,
+    //redirectUri,
     httpInterceptor: {
       allowedList: [`${API_URL}/*`]
     }

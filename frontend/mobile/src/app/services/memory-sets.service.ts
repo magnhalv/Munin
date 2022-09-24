@@ -18,4 +18,8 @@ export class MemorySetsService {
   getMemorySets(): Observable<RD<MemorySet[]>> {
     return this.http.get<MemorySet[]>(`${this.url}/MemorySets`).pipe(toRD);
   }
+
+  healthCheck(): Observable<RD<string>> {
+    return this.http.get<string>(`${this.url}/HealthCheck`).pipe(toRD);
+  }
 }

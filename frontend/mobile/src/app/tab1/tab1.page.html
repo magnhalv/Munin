@@ -25,6 +25,15 @@
   <div>
     {{memorySets | json }}
   </div>
+
+  <div>
+    {{healthCheck | json }}
+  </div>
+
+  <div>
+    Is native {{isNative }}
+  </div>
+
   <div *ngIf="memorySets.status === 'SUCCESS'">
     <ul>
       <li *ngFor="let set of memorySets.data">

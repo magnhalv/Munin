@@ -3,6 +3,7 @@ import {MemorySetsService} from '../services/memory-sets.service';
 import {MemorySet} from '../dto/MemorySet';
 import {RD} from '../dto/RD';
 import {AuthService} from '@auth0/auth0-angular';
+import { Capacitor} from '@capacitor/core';
 
 @Component({
   selector: 'app-tab1',
@@ -12,6 +13,8 @@ import {AuthService} from '@auth0/auth0-angular';
 export class Tab1Page implements OnInit {
 
   memorySets: RD<MemorySet[]> = { status: 'NOT_ASKED'};
+  healthCheck: RD<string> = { status: 'NOT_ASKED'};
+  isNative = null;
 
   constructor(private memorySetService: MemorySetsService, public auth: AuthService) {
     auth.isAuthenticated$.subscribe(r => console.log('is auth', r));
@@ -19,6 +22,7 @@ export class Tab1Page implements OnInit {
     auth.getIdTokenClaims().subscribe(r => console.log('claims', r));
     auth.error$.subscribe(err => console.log('err', err));
     auth.getAccessTokenSilently().subscribe(err => console.log('token', err));
+    this.isNative = Capacitor.isNativePlatform();
   }
 
   ngOnInit(): void {
@@ -26,6 +30,13 @@ export class Tab1Page implements OnInit {
     this.memorySetService.getMemorySets().subscribe(r => {
       this.memorySets = r;
     });
+
+    this.healthCheck = { status: 'LOADING'};
+    this.memorySetService.healthCheck().subscribe(r => {
+      this.healthCheck = r;
+    });
+
+
   }
 
 }
