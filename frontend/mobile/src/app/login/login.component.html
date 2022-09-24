@@ -1,9 +1,12 @@
-<h1>Login</h1>
+<h1>Halla Login</h1>
 
 <div *ngIf="(auth.isAuthenticated$ | async) === false">
   <button (click)="auth.loginWithRedirect()">Log in</button>
 </div>
 
+{{url}}
+https://github.com/ionic-team/ionic-plugin-deeplinks
+https://ionicframework.com/docs/native/deeplinks
 <div *ngIf="(auth.isAuthenticated$ | async) === true">
   <button (click)="auth.logout()">Log out</button>
 </div>

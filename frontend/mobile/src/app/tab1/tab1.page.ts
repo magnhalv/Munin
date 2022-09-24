@@ -16,7 +16,9 @@ export class Tab1Page implements OnInit {
   constructor(private memorySetService: MemorySetsService, public auth: AuthService) {
     auth.isAuthenticated$.subscribe(r => console.log('is auth', r));
     auth.user$.subscribe(r => console.log('user', r));
+    auth.getIdTokenClaims().subscribe(r => console.log('claims', r));
     auth.error$.subscribe(err => console.log('err', err));
+    auth.getAccessTokenSilently().subscribe(err => console.log('token', err));
   }
 
   ngOnInit(): void {
